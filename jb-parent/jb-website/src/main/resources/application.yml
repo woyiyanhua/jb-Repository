@@ -1,0 +1,32 @@
+#设置端口
+server:
+  port: 80
+
+#mysql的四大参数
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/eloan?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: wei1021
+
+#mybatis-plus配置
+mybatis-plus:
+  type-aliases-package: com.fs.eloan.pojo
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  configuration:
+    #是否开启自动驼峰命名规则（camel case）映射，即从经典数据库列名 A_COLUMN（下划线命名） 到经典 Java 属性名 aColumn（驼峰命名） 的类似映射
+    #默认值:true
+    map-underscore-to-camel-case: false
+  global-config:
+    db-config:
+      #table-prefix: tb_  #配置表名前缀都是以tb_
+      id-type: auto     #全局的配置主键生成策略
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #格式化sql日志
+
+
+#设置某个包下的日志输出级别为debug
+logging:
+  level:
+    com.jb: debug
